@@ -1,12 +1,276 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const [activeSection, setActiveSection] = useState('home');
+
+  const bracelets = [
+    {
+      id: 1,
+      name: 'Лунный свет',
+      price: '12 990',
+      image: '/img/6aea902e-e0e6-4908-aa46-663d4b1e9cb2.jpg',
+      description: 'Браслет с лунным камнем и серебром'
+    },
+    {
+      id: 2,
+      name: 'Звездная пыль',
+      price: '15 990',
+      image: '/img/b2a6ccc1-7534-46d4-a8cc-487252eccd95.jpg',
+      description: 'Золотой браслет с небесными шармами'
+    },
+    {
+      id: 3,
+      name: 'Аметист мечты',
+      price: '18 990',
+      image: '/img/73676a16-e904-4764-86e0-07ceae2a4845.jpg',
+      description: 'Кристаллический браслет с аметистом'
+    }
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted">
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              ETHEREAL BRACELETS
+            </h1>
+            <div className="hidden md:flex gap-8">
+              {['home', 'catalog', 'about', 'delivery', 'contacts'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`text-sm transition-colors hover:text-primary ${
+                    activeSection === section ? 'text-primary' : 'text-muted-foreground'
+                  }`}
+                >
+                  {section === 'home' && 'Главная'}
+                  {section === 'catalog' && 'Каталог'}
+                  {section === 'about' && 'О бренде'}
+                  {section === 'delivery' && 'Доставка'}
+                  {section === 'contacts' && 'Контакты'}
+                </button>
+              ))}
+            </div>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Icon name="Menu" size={24} />
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
+        <div className="container mx-auto text-center animate-fade-in">
+          <h2 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-float">
+            Неземная красота
+          </h2>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Украшения, созданные для тех, кто видит магию в каждом моменте
+          </p>
+          <Button
+            size="lg"
+            className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-primary-foreground"
+            onClick={() => scrollToSection('catalog')}
+          >
+            Смотреть коллекцию
+            <Icon name="ArrowRight" size={20} className="ml-2" />
+          </Button>
+        </div>
+      </section>
+
+      <section id="catalog" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-5xl font-bold text-center mb-4">Наша коллекция</h2>
+          <p className="text-center text-muted-foreground mb-12">Каждый браслет — произведение искусства</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {bracelets.map((bracelet, index) => (
+              <Card
+                key={bracelet.id}
+                className="group overflow-hidden border-border bg-card hover:border-primary transition-all duration-300 animate-scale-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={bracelet.image}
+                    alt={bracelet.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="text-2xl font-bold mb-2">{bracelet.name}</h3>
+                  <p className="text-muted-foreground mb-4">{bracelet.description}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-3xl font-bold text-primary">{bracelet.price} ₽</span>
+                    <Button className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+                      Купить
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-5xl font-bold mb-6">О бренде</h2>
+          <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            ETHEREAL BRACELETS — это философия, воплощенная в украшениях. 
+            Мы создаем браслеты, которые соединяют земное с космическим, 
+            материальное с духовным. Каждое изделие несет в себе особую энергию 
+            и создается вручную с любовью к деталям.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                <Icon name="Sparkles" size={32} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Уникальный дизайн</h3>
+              <p className="text-muted-foreground">Каждое изделие создается вручную</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
+                <Icon name="Gem" size={32} className="text-secondary" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Натуральные камни</h3>
+              <p className="text-muted-foreground">Только подлинные минералы</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4">
+                <Icon name="Heart" size={32} className="text-accent" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">С любовью</h3>
+              <p className="text-muted-foreground">Каждая деталь продумана</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="delivery" className="py-20 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-5xl font-bold text-center mb-12">Доставка</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="border-border bg-card">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Truck" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">По России</h3>
+                    <p className="text-muted-foreground">
+                      Бесплатная доставка при заказе от 20 000 ₽. 
+                      Стандартная доставка 3-5 дней — 350 ₽
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Package" size={24} className="text-secondary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Упаковка</h3>
+                    <p className="text-muted-foreground">
+                      Каждый браслет упаковывается в премиальную коробку 
+                      с сертификатом подлинности
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Shield" size={24} className="text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Гарантия</h3>
+                    <p className="text-muted-foreground">
+                      1 год гарантии на все изделия. 
+                      Бесплатный возврат в течение 14 дней
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="border-border bg-card">
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="CreditCard" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Оплата</h3>
+                    <p className="text-muted-foreground">
+                      Принимаем карты, электронные кошельки, 
+                      оплату при получении
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-2xl text-center">
+          <h2 className="text-5xl font-bold mb-6">Контакты</h2>
+          <p className="text-xl text-muted-foreground mb-8">
+            Мы всегда на связи и готовы ответить на ваши вопросы
+          </p>
+          <div className="space-y-4">
+            <div className="flex items-center justify-center gap-3">
+              <Icon name="Mail" size={24} className="text-primary" />
+              <a href="mailto:info@ethereal-bracelets.ru" className="text-lg hover:text-primary transition-colors">
+                info@ethereal-bracelets.ru
+              </a>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Icon name="Phone" size={24} className="text-primary" />
+              <a href="tel:+79991234567" className="text-lg hover:text-primary transition-colors">
+                +7 (999) 123-45-67
+              </a>
+            </div>
+            <div className="flex items-center justify-center gap-3">
+              <Icon name="MapPin" size={24} className="text-primary" />
+              <span className="text-lg">Москва, ул. Звездная, 1</span>
+            </div>
+          </div>
+          <div className="flex justify-center gap-4 mt-8">
+            <Button variant="outline" size="icon" className="rounded-full">
+              <Icon name="Instagram" size={20} />
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full">
+              <Icon name="Send" size={20} />
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full">
+              <Icon name="Facebook" size={20} />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="py-8 border-t border-border">
+        <div className="container mx-auto px-4 text-center text-muted-foreground">
+          <p>© 2024 ETHEREAL BRACELETS. Все права защищены.</p>
+        </div>
+      </footer>
     </div>
   );
 };
