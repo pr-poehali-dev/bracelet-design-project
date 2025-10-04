@@ -9,24 +9,24 @@ const Index = () => {
   const bracelets = [
     {
       id: 1,
-      name: 'Лунный свет',
-      price: '12 990',
+      name: 'Радуга',
+      price: '299',
       image: '/img/6aea902e-e0e6-4908-aa46-663d4b1e9cb2.jpg',
-      description: 'Браслет с лунным камнем и серебром'
+      description: 'Яркий браслет из разноцветных резинок'
     },
     {
       id: 2,
-      name: 'Звездная пыль',
-      price: '15 990',
+      name: 'Сердечки',
+      price: '399',
       image: '/img/b2a6ccc1-7534-46d4-a8cc-487252eccd95.jpg',
-      description: 'Золотой браслет с небесными шармами'
+      description: 'Романтичный браслет с узором сердечек'
     },
     {
       id: 3,
-      name: 'Аметист мечты',
-      price: '18 990',
+      name: 'Звездочка',
+      price: '349',
       image: '/img/73676a16-e904-4764-86e0-07ceae2a4845.jpg',
-      description: 'Кристаллический браслет с аметистом'
+      description: 'Стильный браслет со звездным плетением'
     }
   ];
 
@@ -42,7 +42,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              ETHEREAL BRACELETS
+              BayBrasletiki
             </h1>
             <div className="hidden md:flex gap-8">
               {['home', 'catalog', 'about', 'delivery', 'contacts'].map((section) => (
@@ -71,10 +71,10 @@ const Index = () => {
       <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
         <div className="container mx-auto text-center animate-fade-in">
           <h2 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent animate-float">
-            Неземная красота
+            Яркие браслеты
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Украшения, созданные для тех, кто видит магию в каждом моменте
+            Плетеные браслеты из резинок для самых креативных!
           </p>
           <Button
             size="lg"
@@ -125,10 +125,9 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-5xl font-bold mb-6">О бренде</h2>
           <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-            ETHEREAL BRACELETS — это философия, воплощенная в украшениях. 
-            Мы создаем браслеты, которые соединяют земное с космическим, 
-            материальное с духовным. Каждое изделие несет в себе особую энергию 
-            и создается вручную с любовью к деталям.
+            BayBrasletiki — это яркие и стильные браслеты из резинок, 
+            сплетенные вручную с любовью. Каждый браслет уникален и создан 
+            для того, чтобы добавить красок в твой образ!
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="flex flex-col items-center">
@@ -142,8 +141,8 @@ const Index = () => {
               <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mb-4">
                 <Icon name="Gem" size={32} className="text-secondary" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Натуральные камни</h3>
-              <p className="text-muted-foreground">Только подлинные минералы</p>
+              <h3 className="text-xl font-bold mb-2">Яркие цвета</h3>
+              <p className="text-muted-foreground">Огромный выбор расцветок</p>
             </div>
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-4">
@@ -169,8 +168,8 @@ const Index = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">По России</h3>
                     <p className="text-muted-foreground">
-                      Бесплатная доставка при заказе от 20 000 ₽. 
-                      Стандартная доставка 3-5 дней — 350 ₽
+                      Бесплатная доставка при заказе от 1 000 ₽. 
+                      Стандартная доставка 3-5 дней — 200 ₽
                     </p>
                   </div>
                 </div>
@@ -185,29 +184,13 @@ const Index = () => {
                   <div>
                     <h3 className="text-xl font-bold mb-2">Упаковка</h3>
                     <p className="text-muted-foreground">
-                      Каждый браслет упаковывается в премиальную коробку 
-                      с сертификатом подлинности
+                      Каждый браслет упаковывается в яркую подарочную упаковку
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                    <Icon name="Shield" size={24} className="text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Гарантия</h3>
-                    <p className="text-muted-foreground">
-                      1 год гарантии на все изделия. 
-                      Бесплатный возврат в течение 14 дней
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+
             <Card className="border-border bg-card">
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
@@ -237,8 +220,8 @@ const Index = () => {
           <div className="space-y-4">
             <div className="flex items-center justify-center gap-3">
               <Icon name="Mail" size={24} className="text-primary" />
-              <a href="mailto:info@ethereal-bracelets.ru" className="text-lg hover:text-primary transition-colors">
-                info@ethereal-bracelets.ru
+              <a href="mailto:info@baybrasletiki.ru" className="text-lg hover:text-primary transition-colors">
+                info@baybrasletiki.ru
               </a>
             </div>
             <div className="flex items-center justify-center gap-3">
@@ -268,7 +251,7 @@ const Index = () => {
 
       <footer className="py-8 border-t border-border">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2024 ETHEREAL BRACELETS. Все права защищены.</p>
+          <p>© 2024 BayBrasletiki. Все права защищены.</p>
         </div>
       </footer>
     </div>
