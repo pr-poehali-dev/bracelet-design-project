@@ -11,21 +11,21 @@ const Index = () => {
       id: 1,
       name: 'Радуга',
       price: '299',
-      image: '/img/6aea902e-e0e6-4908-aa46-663d4b1e9cb2.jpg',
+      image: '/img/e7cbac7e-e223-4832-9196-c8f2945059a7.jpg',
       description: 'Яркий браслет из разноцветных резинок'
     },
     {
       id: 2,
       name: 'Сердечки',
       price: '399',
-      image: '/img/b2a6ccc1-7534-46d4-a8cc-487252eccd95.jpg',
+      image: '/img/cb2d1feb-5e8c-405b-9912-278c9feebd1f.jpg',
       description: 'Романтичный браслет с узором сердечек'
     },
     {
       id: 3,
       name: 'Звездочка',
       price: '349',
-      image: '/img/73676a16-e904-4764-86e0-07ceae2a4845.jpg',
+      image: '/img/d78a9352-c269-43dc-bd59-56a0aed4cdd4.jpg',
       description: 'Стильный браслет со звездным плетением'
     }
   ];
